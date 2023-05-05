@@ -4,10 +4,6 @@ interface Style {
   Container: ViewStyle;
   LoginTitle: TextStyle;
   ValidationText: TextStyle;
-  PhoneInputWrapper: ViewStyle;
-  PhoneInput: TextStyle;
-  PhoneTextInput: TextStyle;
-  PhonetextInputStyle: TextStyle;
   PasswordLabel: TextStyle;
   PasswordInput: TextStyle;
   ForgotPasswordButton: TextStyle;
@@ -30,28 +26,8 @@ export default StyleSheet.create<Style>({
     textAlign: 'left',
     width: '100%',
   },
-  PhoneInputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'rgba(31, 31, 51, 0.1)',
-    paddingVertical: 0,
-    marginTop: 50,
-  },
-  PhoneInput: {
-    width: '100%',
-    height: '100%',
-    paddingHorizontal: 0
-  },
-  PhoneTextInput: {
-    backgroundColor: 'white',
-    paddingLeft: 0
-  },
-  PhonetextInputStyle: {
-    fontSize: 20,
-  },
   PasswordLabel: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '700',
     color: '#444',
     marginTop: 20,
@@ -60,7 +36,7 @@ export default StyleSheet.create<Style>({
   PasswordInput: {
     width: '100%',
     height: 50,
-    borderBottomColor: 'rgba(31, 31, 51, 0.1)',
+    borderBottomColor: 'rgba(31, 31, 51, 0.2)',
     borderBottomWidth: 0.5,
     fontSize: 20,
     paddingLeft: 0,
