@@ -16,7 +16,8 @@ const LoginScreen = ({ navigation }: Props) => {
   const phoneRef = useRef(null);
 
   const handleForgotPassword = () => {
-    // navigation.navigate()  
+    console.log('test click here');
+    navigation.navigate('ForgotPasswordPhone');
   };
 
   const handleLoginWithPhone = () => {
@@ -49,21 +50,18 @@ const LoginScreen = ({ navigation }: Props) => {
           value={password}
           placeholder="Enter your password"
         />
-        <TouchableOpacity onPress={() => handleForgotPassword}>
+        <TouchableOpacity onPress={handleForgotPassword}>
           <Text style={styles.ForgotPasswordButton}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => handleLoginWithPhone}
+          onPress={handleLoginWithPhone}
           style={styles.LoginPhoneButton}
         >
           <Text style={styles.LoginWithPhoneButton}>
             Login with Phone Number
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => handleLogin}
-          style={styles.LoginButton}
-        >
+        <TouchableOpacity onPress={handleLogin} style={styles.LoginButton}>
           <Text style={styles.LoginButtonText}>Login</Text>
         </TouchableOpacity>
       </View>
