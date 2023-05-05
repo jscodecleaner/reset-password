@@ -4,6 +4,17 @@ interface Style {
   Container: ViewStyle;
   LoginTitle: TextStyle;
   ValidationText: TextStyle;
+  PhoneInputWrapper: ViewStyle;
+  PhoneInput: TextStyle;
+  PhoneTextInput: TextStyle;
+  PhonetextInputStyle: TextStyle;
+  PasswordLabel: TextStyle;
+  PasswordInput: TextStyle;
+  ForgotPasswordButton: TextStyle;
+  LoginPhoneButton: ViewStyle;
+  LoginWithPhoneButton: TextStyle;
+  LoginButton: ViewStyle;
+  LoginButtonText: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -18,5 +29,74 @@ export default StyleSheet.create<Style>({
     color: '#18181F',
     textAlign: 'left',
     width: '100%',
+  },
+  PhoneInputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'rgba(31, 31, 51, 0.1)',
+    paddingVertical: 0,
+    marginTop: 50,
+  },
+  PhoneInput: {
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 0
+  },
+  PhoneTextInput: {
+    backgroundColor: 'white',
+    paddingLeft: 0
+  },
+  PhonetextInputStyle: {
+    fontSize: 20,
+  },
+  PasswordLabel: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#444',
+    marginTop: 20,
+    alignSelf: 'flex-start',
+  },
+  PasswordInput: {
+    width: '100%',
+    height: 50,
+    borderBottomColor: 'rgba(31, 31, 51, 0.1)',
+    borderBottomWidth: 0.5,
+    fontSize: 20,
+    paddingLeft: 0,
+  },
+  ForgotPasswordButton: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#5B41EB',
+    marginTop: 50,
+  },
+  LoginWithPhoneButton: {
+    fontSize: 17,
+    color: '#393940',
+    fontWeight: '700',
+    backgroundColor: '#EDEDEF',
+    width: '100%',
+    paddingVertical: 16,
+    textAlign: 'center',
+    borderRadius: 15,
+  },
+  LoginPhoneButton: {
+    width: '100%',
+    marginTop: 170,
+  },
+  LoginButton: {
+    width: '100%',
+    marginTop: 20,
+  },
+  LoginButtonText: {
+    fontSize: 17,
+    color: 'white',
+    fontWeight: '700',
+    backgroundColor: '#5B41EB',
+    width: '100%',
+    paddingVertical: 16,
+    textAlign: 'center',
+    borderRadius: 15,
   },
 });

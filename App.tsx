@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: 'Login' }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ForgotPasswordPhoneScreen"
