@@ -10,21 +10,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/screens/LoginScreen/LoginScreen';
 import ForgotPasswordPhoneScreen from './src/screens/ForgotPasswordPhoneScreen/ForgotPasswordPhoneScreen';
+import ForgotPasswordCodeScreen from './src/screens/ForgotPasswordCodeScreen/ForgotPasswordCodeScreen';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen
-          name="Login"
+          name="LoginScreen"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="ForgotPasswordPhone"
+          name="ForgotPasswordPhoneScreen"
           component={ForgotPasswordPhoneScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ForgotPasswordCodeScreen"
+          component={ForgotPasswordCodeScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

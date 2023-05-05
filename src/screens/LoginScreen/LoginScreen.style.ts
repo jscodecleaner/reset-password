@@ -3,7 +3,6 @@ import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 interface Style {
   Container: ViewStyle;
   LoginTitle: TextStyle;
-  ValidationText: TextStyle;
   PasswordLabel: TextStyle;
   PasswordInput: TextStyle;
   ForgotPasswordButton: TextStyle;
@@ -18,6 +17,7 @@ export default StyleSheet.create<Style>({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 25,
+    marginTop: 55,
   },
   LoginTitle: {
     fontSize: 42,

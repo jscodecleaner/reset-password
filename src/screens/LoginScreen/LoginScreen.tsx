@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import styles from './LoginScreen.style';
 import Background from '../../components/Background';
-import Header from '../../components/Header';
 import PhoneNumer from '../../components/PhoneNumber/PhoneNumber';
 
 export type Props = {
@@ -17,7 +16,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
   const handleForgotPassword = () => {
     console.log('test click here');
-    navigation.navigate('ForgotPasswordPhone');
+    navigation.navigate('ForgotPasswordPhoneScreen');
   };
 
   const handleLoginWithPhone = () => {
@@ -30,7 +29,6 @@ const LoginScreen = ({ navigation }: Props) => {
 
   return (
     <Background>
-      <Header navigation={navigation} screenName="Login" />
       <View style={styles.Container}>
         <Text style={styles.LoginTitle}>Login</Text>
         <PhoneNumer

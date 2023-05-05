@@ -3,12 +3,11 @@ import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 type Props = {
   navigation: any;
-  screenName: string;
 };
 
-const Header = ({ navigation, screenName }: Props) => {
+const Header = ({ navigation }: Props) => {
   const handlePress = () => {
-    navigation.navigate(screenName);
+    navigation.goBack();
   };
 
   return (

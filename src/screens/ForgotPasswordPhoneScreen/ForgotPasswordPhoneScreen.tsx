@@ -15,12 +15,12 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
   const phoneRef = useRef(null);
 
   const handleResetPassword = () => {
-    // navigation.navigate()
+    navigation.navigate('ForgotPasswordCodeScreen');
   };
 
   return (
     <Background>
-      <Header navigation={navigation} screenName="Login" />
+      <Header navigation={navigation} />
       <View style={styles.Container}>
         <Text style={styles.Title}>Forgot Password</Text>
         <Text style={styles.PasswordLabel}>
@@ -36,7 +36,7 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
           }}
         />
         <TouchableOpacity
-          onPress={() => handleResetPassword}
+          onPress={handleResetPassword}
           style={styles.ResetButton}
         >
           <Text style={styles.ResetButtonText}>Reset Password</Text>
