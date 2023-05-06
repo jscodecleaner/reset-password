@@ -3,7 +3,7 @@ import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 interface Style {
   PhoneInputWrapper: ViewStyle;
   PhoneInput: TextStyle;
-  PhoneTextInput: TextStyle;
+  PhoneTextInput: ViewStyle;
   PhonetextInputStyle: TextStyle;
 }
 

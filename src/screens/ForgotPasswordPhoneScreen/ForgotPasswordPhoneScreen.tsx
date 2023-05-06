@@ -5,6 +5,7 @@ import Background from '../../components/Background';
 import Header from '../../components/Header';
 import PhoneNumer from '../../components/PhoneNumber/PhoneNumber';
 import CustomLoading from '../../components/CustomLoading/CustomLoading';
+import { PhoneInput } from 'react-native-phone-number-input';
 
 export type Props = {
   navigation: any;
@@ -14,17 +15,16 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const phoneRef = useRef(null);
+  const phoneRef = useRef<PhoneInput>(null);
 
   const handleResetPassword = async () => {
     setLoading(true);
     try {
       const { wholePhonenumber } =
-        phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue);
+        phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue) || '';
       const countryCodeVal = wholePhonenumber.split(phoneNumber).join('');
 
-      // Replace this with your actual password reset function
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       navigation.navigate('ForgotPasswordCodeScreen', {
         countryCode: countryCodeVal,

@@ -12,19 +12,18 @@ const LoginScreen = ({ navigation }: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
   const [password, setPassword] = useState('');
-  const phoneRef = useRef(null);
+  const phoneRef = useRef<React.ElementRef<typeof PhoneNumer>>(null);
 
   const handleForgotPassword = () => {
-    console.log('test click here');
     navigation.navigate('ForgotPasswordPhoneScreen');
   };
 
   const handleLoginWithPhone = () => {
-    // navigation.navigate()
+    console.log('phoneNumber ', phoneNumber);
   };
 
   const handleLogin = () => {
-    // navigation.navigate()
+    console.log('formattedValue ', formattedValue);
   };
 
   return (

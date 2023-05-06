@@ -7,7 +7,7 @@ interface Style {
   PasswordInput: TextStyle;
   ResetButton: ViewStyle;
   ResetButtonText: TextStyle;
-  disabledButton: boolean;
+  disabledButton: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({

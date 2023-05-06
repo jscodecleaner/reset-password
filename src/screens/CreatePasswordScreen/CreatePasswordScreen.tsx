@@ -16,8 +16,9 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
   const [validPassword, setValidPassword] = useState(false);
 
   const handleResetPassword = async () => {
-    setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // We can add some functions to reset password later.
+    setLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 2000));
     setLoading(false);
     navigation.navigate('LoginScreen');
   };
@@ -26,15 +27,15 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(password);
     const hasNumber = /\d/.test(password);
-  
+
     return password.length >= minLength && hasUpperCase && hasNumber;
   };
 
   useEffect(() => {
-    if(isPasswordStrong(password)) {
-      setValidPassword(true)
+    if (isPasswordStrong(password)) {
+      setValidPassword(true);
     } else {
-      setValidPassword(false)
+      setValidPassword(false);
     }
   }, [password]);
 
@@ -55,13 +56,27 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
           <TouchableOpacity
             onPress={() => setIsPasswordVisible(!isPasswordVisible)}
           >
-            {isPasswordVisible ? <Image style={styles.EyeImage} source={require('../../assets/images/eye-hide.png')} /> : <Image style={styles.EyeImage} source={require('../../assets/images/eye.png')} />}
+            {isPasswordVisible ? (
+              <Image
+                style={styles.EyeImage}
+                source={require('../../assets/images/eye-hide.png')}
+              />
+            ) : (
+              <Image
+                style={styles.EyeImage}
+                source={require('../../assets/images/eye.png')}
+              />
+            )}
           </TouchableOpacity>
         </View>
         {!validPassword && (
           <View style={styles.PasswordFormatLabelContainer}>
-            <Text style={styles.PasswordFormatLabel}>{'\u00B7'} Minimum 8 charaters</Text>
-            <Text style={styles.PasswordFormatLabel}>{'\u00B7'} 1 upper case letter</Text>
+            <Text style={styles.PasswordFormatLabel}>
+              {'\u00B7'} Minimum 8 charaters
+            </Text>
+            <Text style={styles.PasswordFormatLabel}>
+              {'\u00B7'} 1 upper case letter
+            </Text>
             <Text style={styles.PasswordFormatLabel}>{'\u00B7'} 1 number</Text>
           </View>
         )}

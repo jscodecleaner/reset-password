@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
 
 interface Style {
   Container: ViewStyle;
@@ -9,10 +9,10 @@ interface Style {
   ResetButtonText: TextStyle;
   PasswordInputContainer: ViewStyle;
   PasswordVisibilityToggle: ViewStyle;
-  EyeImage: ViewStyle;
+  EyeImage: ImageStyle;
   PasswordFormatLabelContainer: ViewStyle;
   PasswordFormatLabel: TextStyle;
-  disabledButton: boolean;
+  disabledButton: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({

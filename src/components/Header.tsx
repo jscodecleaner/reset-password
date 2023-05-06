@@ -1,5 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+  ImageSourcePropType,
+} from 'react-native';
 
 type Props = {
   navigation: any;
@@ -10,14 +16,20 @@ const Header = ({ navigation }: Props) => {
     navigation.goBack();
   };
 
+  const backIcon: ImageSourcePropType = require('../assets/images/Left.png');
+
   return (
     <TouchableOpacity style={styles.container} onPress={handlePress}>
-      <Image source={require('../assets/images/Left.png')} />
+      <Image source={backIcon} />
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
+interface Style {
+  container: ViewStyle;
+}
+
+const styles = StyleSheet.create<Style>({
   container: {
     backgroundColor: '#E5E5E5',
     borderRadius: 25,

@@ -16,9 +16,7 @@ export default function Background({ children }: Props) {
       {children}
     </KeyboardAvoidingView>
   ) : (
-    <SafeAreaView style={styles.container}>
-      {children}
-    </SafeAreaView>
+    <SafeAreaView style={styles.container}>{children}</SafeAreaView>
   );
 }
 

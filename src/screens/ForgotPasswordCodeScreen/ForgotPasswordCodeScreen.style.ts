@@ -13,7 +13,7 @@ interface Style {
   ResendCodeLabel: TextStyle;
   ResendCodeRemainSeconds: TextStyle;
   ResendCodeButton: TextStyle;
-  disabledButton: boolean;
+  disabledButton: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -85,10 +85,10 @@ export default StyleSheet.create<Style>({
     fontSize: 14,
     fontWeight: '700',
     marginTop: 10,
-    textAlign:'center',
+    textAlign: 'center',
   },
   ResendCodeRemainSeconds: {
-    color: 'rgba(24, 24, 31, 1)'
+    color: 'rgba(24, 24, 31, 1)',
   },
   ResendCodeButton: {
     textDecorationLine: 'underline',

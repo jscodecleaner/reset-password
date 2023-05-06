@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './ForgotPasswordCodeScreen.style';
 import OTPTextInput from 'react-native-otp-textinput';
 import Background from '../../components/Background';
-import OTPSender from '../../api/OTPSender'
+import OTPSender from '../../api/OTPSender';
 import Header from '../../components/Header';
 import CustomLoading from '../../components/CustomLoading/CustomLoading';
 
@@ -24,12 +24,12 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
   const [validCodeStatus, setValidCodeStatus] = useState(false);
   const [code, setCode] = useState('');
   const [otpCode, setOtpCode] = useState('');
-  const [countdown, setCountdown] = useState(20);
+  const [countdown, setCountdown] = useState(60);
   const [isCountingDown, setIsCountingDown] = useState(false);
 
   const handleResetPassword = async () => {
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     setOtpCode('');
     setLoading(false);
     setValidCodeStatus(false);
@@ -38,7 +38,7 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
 
   const startCountdown = () => {
     setIsCountingDown(true);
-    setCountdown(20);
+    setCountdown(60);
   };
 
   const handleResendOTP = () => {
@@ -68,10 +68,10 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
   });
 
   useEffect(() => {
-    if(otpCode) {
+    if (otpCode) {
       code === otpCode ? setValidCodeStatus(true) : setValidCodeStatus(false);
     }
-  }, [otpCode])
+  }, [otpCode]);
 
   useEffect(() => {
     if (isCountingDown && countdown > 0) {
@@ -106,13 +106,15 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
             //     : styles.otpInputInactive
             // }
             textInputStyle={styles.otpInputActive}
-            handleTextChange={(code) => setOtpCode(code)}
+            handleTextChange={code => setOtpCode(code)}
           />
         </View>
         <Text style={styles.ResendCodeLabel}>
           Didn't get the code? We can{' '}
           {isCountingDown ? (
-            <Text style={styles.ResendCodeRemainSeconds}>resend it in {countdown}s.</Text>
+            <Text style={styles.ResendCodeRemainSeconds}>
+              resend it in {countdown}s.
+            </Text>
           ) : (
             <Text onPress={handleResendOTP} style={styles.ResendCodeButton}>
               resend it
