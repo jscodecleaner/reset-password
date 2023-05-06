@@ -5,6 +5,7 @@ import OTPTextInput from 'react-native-otp-textinput';
 import Background from '../../components/Background';
 import OTPSender from '../../api/OTPSender'
 import Header from '../../components/Header';
+import CustomLoading from '../../components/CustomLoading/CustomLoading';
 
 export type Props = {
   navigation: any;
@@ -18,21 +19,26 @@ export type Props = {
 
 const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
   const { countryCode, wholePhonenumber } = route.params;
+  const [loading, setLoading] = useState(false);
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
   const [validCodeStatus, setValidCodeStatus] = useState(false);
   const [code, setCode] = useState('');
   const [otpCode, setOtpCode] = useState('');
-  const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(20);
   const [isCountingDown, setIsCountingDown] = useState(false);
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setOtpCode('');
+    setLoading(false);
+    setValidCodeStatus(false);
     navigation.navigate('CreatePasswordScreen');
   };
 
   const startCountdown = () => {
     setIsCountingDown(true);
-    setCountdown(60);
+    setCountdown(20);
   };
 
   const handleResendOTP = () => {
@@ -118,14 +124,18 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
           style={styles.ResetButton}
           disabled={!validCodeStatus}
         >
-          <Text
-            style={[
-              styles.ResetButtonText,
-              !validCodeStatus && styles.disabledButton,
-            ]}
-          >
-            Reset Password
-          </Text>
+          {loading ? (
+            <CustomLoading />
+          ) : (
+            <Text
+              style={[
+                styles.ResetButtonText,
+                (!validCodeStatus || loading) && styles.disabledButton,
+              ]}
+            >
+              Reset Password
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
     </Background>

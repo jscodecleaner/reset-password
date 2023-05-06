@@ -3,6 +3,7 @@ import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import styles from './CreatePasswordScreen.style';
 import Background from '../../components/Background';
 import Header from '../../components/Header';
+import CustomLoading from '../../components/CustomLoading/CustomLoading';
 
 export type Props = {
   navigation: any;
@@ -10,10 +11,14 @@ export type Props = {
 
 const CreatePasswordScreen = ({ navigation }: Props) => {
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
 
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
+    setLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoading(false);
     navigation.navigate('LoginScreen');
   };
 
@@ -65,7 +70,18 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
           style={styles.ResetButton}
           disabled={!validPassword}
         >
-          <Text style={[styles.ResetButtonText, !validPassword && styles.disabledButton]}>Reset Password</Text>
+          {loading ? (
+            <CustomLoading />
+          ) : (
+            <Text
+              style={[
+                styles.ResetButtonText,
+                (!validPassword || loading) && styles.disabledButton,
+              ]}
+            >
+              Reset Password
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
     </Background>

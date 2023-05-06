@@ -4,6 +4,7 @@ import styles from './ForgotPasswordPhoneScreen.style';
 import Background from '../../components/Background';
 import Header from '../../components/Header';
 import PhoneNumer from '../../components/PhoneNumber/PhoneNumber';
+import CustomLoading from '../../components/CustomLoading/CustomLoading';
 
 export type Props = {
   navigation: any;
@@ -12,17 +13,29 @@ export type Props = {
 const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [formattedValue, setFormattedValue] = useState('');
+  const [loading, setLoading] = useState(false);
   const phoneRef = useRef(null);
 
-  const handleResetPassword = () => {
-    const { wholePhonenumber } =
-      phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue);
-    const countryCodeVal = wholePhonenumber.split(phoneNumber).join('');
+  const handleResetPassword = async () => {
+    setLoading(true);
+    try {
+      const { wholePhonenumber } =
+        phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue);
+      const countryCodeVal = wholePhonenumber.split(phoneNumber).join('');
 
-    navigation.navigate('ForgotPasswordCodeScreen', {
-      countryCode: countryCodeVal,
-      wholePhonenumber: wholePhonenumber,
-    });
+      // Replace this with your actual password reset function
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      navigation.navigate('ForgotPasswordCodeScreen', {
+        countryCode: countryCodeVal,
+        wholePhonenumber: wholePhonenumber,
+      });
+    } catch (error) {
+      // Handle any errors here
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -47,14 +60,18 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
           style={styles.ResetButton}
           disabled={!phoneNumber}
         >
-          <Text
-            style={[
-              styles.ResetButtonText,
-              !phoneNumber && styles.disabledButton,
-            ]}
-          >
-            Reset Password
-          </Text>
+          {loading ? (
+            <CustomLoading />
+          ) : (
+            <Text
+              style={[
+                styles.ResetButtonText,
+                (!phoneNumber || loading) && styles.disabledButton,
+              ]}
+            >
+              Reset Password
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
     </Background>
