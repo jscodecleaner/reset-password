@@ -16,7 +16,9 @@ export default function Background({ children }: Props) {
       {children}
     </KeyboardAvoidingView>
   ) : (
-    <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      {children}
+    </SafeAreaView>
   );
 }
 
@@ -25,8 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 0,
     width: '100%',
-    alignSelf: 'center',
-    justifyContent: 'flex-start',
     backgroundColor: 'white',
   },
 });

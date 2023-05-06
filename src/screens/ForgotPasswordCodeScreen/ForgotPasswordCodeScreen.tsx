@@ -17,7 +17,7 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
   const [isCountingDown, setIsCountingDown] = useState(false);
 
   const handleResetPassword = () => {
-    // navigation.navigate()
+    navigation.navigate('CreatePasswordScreen');
   };
 
   const startCountdown = () => {
@@ -78,7 +78,7 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
           )}
         </Text>
         <TouchableOpacity
-          onPress={() => handleResetPassword}
+          onPress={handleResetPassword}
           style={styles.ResetButton}
         >
           <Text style={styles.ResetButtonText}>Reset Password</Text>

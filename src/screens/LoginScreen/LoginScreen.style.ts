@@ -14,12 +14,11 @@ interface Style {
 
 export default StyleSheet.create<Style>({
   Container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
     paddingHorizontal: 25,
-    marginTop: 55,
   },
   LoginTitle: {
+    marginTop: 55,
     fontSize: 42,
     fontWeight: '700',
     color: '#18181F',
@@ -37,7 +36,7 @@ export default StyleSheet.create<Style>({
     width: '100%',
     height: 50,
     borderBottomColor: 'rgba(31, 31, 51, 0.2)',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1,
     fontSize: 20,
     paddingLeft: 0,
   },
@@ -46,6 +45,7 @@ export default StyleSheet.create<Style>({
     fontWeight: '700',
     color: '#5B41EB',
     marginTop: 50,
+    textAlign: 'center',
   },
   LoginWithPhoneButton: {
     fontSize: 17,

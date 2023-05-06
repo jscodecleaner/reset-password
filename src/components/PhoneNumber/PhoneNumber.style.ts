@@ -11,15 +11,14 @@ export default StyleSheet.create<Style>({
   PhoneInputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 2,
     borderBottomColor: 'rgba(31, 31, 51, 0.1)',
-    paddingVertical: 0,
+    padding: 0,
     marginTop: 50,
   },
   PhoneInput: {
     width: '100%',
     height: '100%',
-    paddingHorizontal: 0,
   },
   PhoneTextInput: {
     backgroundColor: 'white',

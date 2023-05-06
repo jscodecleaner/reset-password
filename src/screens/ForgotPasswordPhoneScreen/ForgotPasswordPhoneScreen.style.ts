@@ -11,8 +11,6 @@ interface Style {
 
 export default StyleSheet.create<Style>({
   Container: {
-    alignItems: 'center',
-    justifyContent: 'center',
     paddingHorizontal: 25,
   },
   Title: {
@@ -40,7 +38,7 @@ export default StyleSheet.create<Style>({
   },
   ResetButton: {
     width: '100%',
-    marginTop: 300,
+    marginTop: 293,
   },
   ResetButtonText: {
     fontSize: 17,

@@ -4,15 +4,15 @@ interface Style {
   Container: ViewStyle;
   Title: TextStyle;
   PasswordLabel: TextStyle;
-  PhoneLabel: TextStyle;
   PasswordInput: TextStyle;
   ResetButton: ViewStyle;
   ResetButtonText: TextStyle;
-  otpInputActive: TextStyle;
-  otpInputInactive: TextStyle;
-  ResendCodeLabel: TextStyle;
-  ResendCodeRemainSeconds: TextStyle;
-  ResendCodeButton: TextStyle;
+  PasswordInputContainer: ViewStyle;
+  PasswordVisibilityToggle: ViewStyle;
+  EyeImage: ViewStyle;
+  PasswordFormatLabelContainer: ViewStyle;
+  PasswordFormatLabel: TextStyle;
+  disabledButton: boolean;
 }
 
 export default StyleSheet.create<Style>({
@@ -27,20 +27,14 @@ export default StyleSheet.create<Style>({
     width: '100%',
   },
   PasswordLabel: {
-    fontSize: 17,
+    fontSize: 14,
     fontWeight: '700',
-    color: 'rgba(24, 24, 31, 0.45)',
-    marginTop: 20,
-    alignSelf: 'flex-start',
-  },
-  PhoneLabel: {
-    fontSize: 17,
     color: 'rgba(24, 24, 31, 1)',
+    marginTop: 170,
     alignSelf: 'flex-start',
-    marginBottom: 50,
-    fontWeight: '500',
   },
   PasswordInput: {
+    flex: 1,
     width: '100%',
     height: 50,
     borderBottomColor: 'rgba(31, 31, 51, 0.2)',
@@ -50,7 +44,7 @@ export default StyleSheet.create<Style>({
   },
   ResetButton: {
     width: '100%',
-    marginTop: 268,
+    marginTop: 210,
   },
   ResetButtonText: {
     fontSize: 17,
@@ -62,31 +56,26 @@ export default StyleSheet.create<Style>({
     textAlign: 'center',
     borderRadius: 15,
   },
-  otpInputActive: {
-    width: '20%',
-    height: 48,
-    borderBottomWidth: 2,
-    borderBottomColor: 'grey',
-    marginTop: 70,
+  PasswordInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: 'rgba(31, 31, 51, 0.2)', // You can change this color as needed
+    marginBottom: 20,
   },
-  otpInputInactive: {
-    width: '20%',
-    height: 48,
-    borderBottomWidth: 2,
-    borderBottomColor: 'lightgrey',
-    marginTop: 70,
+  EyeImage: {
+    width: 30,
+    height: 20,
+    resizeMode: 'contain',
   },
-  ResendCodeLabel: {
-    fontSize: 14,
-    fontWeight: '700',
-    marginTop: 10,
-    textAlign:'center',
+  PasswordFormatLabelContainer: {
+    width: '100%',
   },
-  ResendCodeRemainSeconds: {
-    color: 'rgba(24, 24, 31, 1)'
+  PasswordFormatLabel: {
+    color: 'rgba(24, 24, 31, 1)',
+    fontSize: 17,
   },
-  ResendCodeButton: {
-    textDecorationLine: 'underline',
-    color: '#007BFF',
+  disabledButton: {
+    backgroundColor: '#999',
   },
 });
