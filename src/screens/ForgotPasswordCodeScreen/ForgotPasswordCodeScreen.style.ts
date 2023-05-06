@@ -13,6 +13,7 @@ interface Style {
   ResendCodeLabel: TextStyle;
   ResendCodeRemainSeconds: TextStyle;
   ResendCodeButton: TextStyle;
+  disabledButton: boolean;
 }
 
 export default StyleSheet.create<Style>({
@@ -61,6 +62,10 @@ export default StyleSheet.create<Style>({
     paddingVertical: 16,
     textAlign: 'center',
     borderRadius: 15,
+  },
+  disabledButton: {
+    backgroundColor: '#EDEDEF',
+    color: '#393940',
   },
   otpInputActive: {
     width: '20%',

@@ -76,6 +76,7 @@ export default StyleSheet.create<Style>({
     fontSize: 17,
   },
   disabledButton: {
-    backgroundColor: '#999',
+    backgroundColor: '#EDEDEF',
+    color: '#393940',
   },
 });

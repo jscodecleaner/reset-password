@@ -15,7 +15,14 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
   const phoneRef = useRef(null);
 
   const handleResetPassword = () => {
-    navigation.navigate('ForgotPasswordCodeScreen');
+    const { wholePhonenumber } =
+      phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue);
+    const countryCodeVal = wholePhonenumber.split(phoneNumber).join('');
+
+    navigation.navigate('ForgotPasswordCodeScreen', {
+      countryCode: countryCodeVal,
+      wholePhonenumber: wholePhonenumber,
+    });
   };
 
   return (
@@ -27,7 +34,7 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
           Please enter your registered phone number to reset your password
         </Text>
         <PhoneNumer
-          phoneRef={phoneRef}
+          ref={phoneRef}
           onChange={text => {
             setPhoneNumber(text);
           }}
@@ -38,8 +45,16 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
         <TouchableOpacity
           onPress={handleResetPassword}
           style={styles.ResetButton}
+          disabled={!phoneNumber}
         >
-          <Text style={styles.ResetButtonText}>Reset Password</Text>
+          <Text
+            style={[
+              styles.ResetButtonText,
+              !phoneNumber && styles.disabledButton,
+            ]}
+          >
+            Reset Password
+          </Text>
         </TouchableOpacity>
       </View>
     </Background>

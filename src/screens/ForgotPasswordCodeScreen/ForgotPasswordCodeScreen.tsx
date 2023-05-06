@@ -3,43 +3,79 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './ForgotPasswordCodeScreen.style';
 import OTPTextInput from 'react-native-otp-textinput';
 import Background from '../../components/Background';
+import OTPSender from '../../api/OTPSender'
 import Header from '../../components/Header';
 
 export type Props = {
   navigation: any;
+  route: {
+    params: {
+      countryCode: string;
+      wholePhonenumber: string;
+    };
+  };
 };
 
-const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
-  const [formattedValue, setFormattedValue] = useState('');
+const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
+  const { countryCode, wholePhonenumber } = route.params;
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
+  const [validCodeStatus, setValidCodeStatus] = useState(false);
   const [code, setCode] = useState('');
-  const [otpArray, setOtpArray] = useState('');
-  const [countdown, setCountdown] = useState(20);
+  const [otpCode, setOtpCode] = useState('');
+  const [countdown, setCountdown] = useState(60);
   const [isCountingDown, setIsCountingDown] = useState(false);
 
   const handleResetPassword = () => {
+    setOtpCode('');
     navigation.navigate('CreatePasswordScreen');
   };
 
   const startCountdown = () => {
     setIsCountingDown(true);
-    setCountdown(20);
+    setCountdown(60);
+  };
+
+  const handleResendOTP = () => {
+    startCountdown();
+    sendFirstOTPCode();
+  };
+
+  const sendFirstOTPCode = () => {
+    var randomNumber = Math.floor(1000 + Math.random() * 9000);
+    setCode(randomNumber.toString());
+
+    OTPSender.sendSMS(wholePhonenumber, randomNumber.toString());
+    setOtpCode('');
   };
 
   useEffect(() => {
     startCountdown();
+    sendFirstOTPCode();
+    setValidCodeStatus(false);
+    console.log('validCodeStatus ', validCodeStatus);
   }, []);
+
+  useEffect(() => {
+    const formatedNumber =
+      countryCode + ' ' + wholePhonenumber.split(countryCode).join('');
+    setFormattedPhoneNumber(formatedNumber);
+  });
+
+  useEffect(() => {
+    if(otpCode) {
+      code === otpCode ? setValidCodeStatus(true) : setValidCodeStatus(false);
+    }
+  }, [otpCode])
 
   useEffect(() => {
     if (isCountingDown && countdown > 0) {
       const timer = setTimeout(() => {
         setCountdown(countdown - 1);
       }, 1000);
-  
       return () => {
         clearTimeout(timer);
       };
     }
-  
     if (countdown === 0) {
       setIsCountingDown(false);
     }
@@ -53,7 +89,7 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
         <Text style={styles.PasswordLabel}>
           Enter the 4-digit code sent to you at
         </Text>
-        <Text style={styles.PhoneLabel}>+44 124 2412 23</Text>
+        <Text style={styles.PhoneLabel}>{formattedPhoneNumber}</Text>
         <View style={styles.inputView}>
           <OTPTextInput
             inputCount={4}
@@ -64,7 +100,7 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
             //     : styles.otpInputInactive
             // }
             textInputStyle={styles.otpInputActive}
-            handleTextChange={(code) => setOtpArray(code)}
+            handleTextChange={(code) => setOtpCode(code)}
           />
         </View>
         <Text style={styles.ResendCodeLabel}>
@@ -72,7 +108,7 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
           {isCountingDown ? (
             <Text style={styles.ResendCodeRemainSeconds}>resend it in {countdown}s.</Text>
           ) : (
-            <Text onPress={startCountdown} style={styles.ResendCodeButton}>
+            <Text onPress={handleResendOTP} style={styles.ResendCodeButton}>
               resend it
             </Text>
           )}
@@ -80,8 +116,16 @@ const ForgotPasswordCodeScreen = ({ navigation }: Props) => {
         <TouchableOpacity
           onPress={handleResetPassword}
           style={styles.ResetButton}
+          disabled={!validCodeStatus}
         >
-          <Text style={styles.ResetButtonText}>Reset Password</Text>
+          <Text
+            style={[
+              styles.ResetButtonText,
+              !validCodeStatus && styles.disabledButton,
+            ]}
+          >
+            Reset Password
+          </Text>
         </TouchableOpacity>
       </View>
     </Background>

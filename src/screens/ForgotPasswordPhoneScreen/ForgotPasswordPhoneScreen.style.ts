@@ -7,6 +7,7 @@ interface Style {
   PasswordInput: TextStyle;
   ResetButton: ViewStyle;
   ResetButtonText: TextStyle;
+  disabledButton: boolean;
 }
 
 export default StyleSheet.create<Style>({
@@ -49,5 +50,9 @@ export default StyleSheet.create<Style>({
     paddingVertical: 16,
     textAlign: 'center',
     borderRadius: 15,
+  },
+  disabledButton: {
+    backgroundColor: '#EDEDEF',
+    color: '#393940',
   },
 });

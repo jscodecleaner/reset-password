@@ -1,4 +1,4 @@
-import React, { forwardRef, RefObject } from 'react';
+import React, { forwardRef, RefObject, useImperativeHandle } from 'react';
 import { View } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
 import styles from './PhoneNumber.style';
@@ -10,6 +10,15 @@ type Props = {
 
 const PhoneNumer: React.FC<Props> = forwardRef(
   (props: Props, ref: RefObject<PhoneInput>) => {
+    const getCountryCodeAndPhoneNumber = (formattedText: string) => {
+      const wholePhonenumber = formattedText.split(' ')[0];
+      return { wholePhonenumber };
+    };
+  
+    useImperativeHandle(ref, () => ({
+      getCountryCodeAndPhoneNumber,
+    }));
+
     return (
       <View style={styles.PhoneInputWrapper}>
         <PhoneInput
@@ -25,6 +34,7 @@ const PhoneNumer: React.FC<Props> = forwardRef(
           }}
           onChangeFormattedText={text => {
             props.setFormattedValue(text);
+            getCountryCodeAndPhoneNumber(text);
           }}
           withDarkTheme
         />
