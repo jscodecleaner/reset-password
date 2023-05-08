@@ -1,19 +1,19 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './ForgotPasswordPhoneScreen.style';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
-import PhoneNumer from '../../components/PhoneNumber/PhoneNumber';
-import CustomLoading from '../../components/CustomLoading/CustomLoading';
-import { PhoneInput } from 'react-native-phone-number-input';
+import React, { useState, useRef } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import styles from "./ForgotPasswordPhoneScreen.style";
+import Background from "../../components/Background";
+import Header from "../../components/Header";
+import PhoneNumer from "../../components/PhoneNumber/PhoneNumber";
+import CustomLoading from "../../components/CustomLoading/CustomLoading";
+import { PhoneInput } from "react-native-phone-number-input";
 
 export type Props = {
   navigation: any;
 };
 
 const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [formattedValue, setFormattedValue] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [formattedValue, setFormattedValue] = useState("");
   const [loading, setLoading] = useState(false);
   const phoneRef = useRef<PhoneInput>(null);
 
@@ -21,12 +21,12 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
     setLoading(true);
     try {
       const { wholePhonenumber } =
-        phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue) || '';
-      const countryCodeVal = wholePhonenumber.split(phoneNumber).join('');
+        phoneRef.current.getCountryCodeAndPhoneNumber(formattedValue) || "";
+      const countryCodeVal = wholePhonenumber.split(phoneNumber).join("");
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      navigation.navigate('ForgotPasswordCodeScreen', {
+      navigation.navigate("ForgotPasswordCodeScreen", {
         countryCode: countryCodeVal,
         wholePhonenumber: wholePhonenumber,
       });
@@ -48,10 +48,10 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
         </Text>
         <PhoneNumer
           ref={phoneRef}
-          onChange={text => {
+          onChange={(text) => {
             setPhoneNumber(text);
           }}
-          setFormattedValue={text => {
+          setFormattedValue={(text) => {
             setFormattedValue(text);
           }}
         />

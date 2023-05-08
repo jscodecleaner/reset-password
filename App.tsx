@@ -5,13 +5,13 @@
  * @format
  */
 
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from './src/screens/LoginScreen/LoginScreen';
-import ForgotPasswordPhoneScreen from './src/screens/ForgotPasswordPhoneScreen/ForgotPasswordPhoneScreen';
-import ForgotPasswordCodeScreen from './src/screens/ForgotPasswordCodeScreen/ForgotPasswordCodeScreen';
-import CreatePasswordScreen from './src/screens/CreatePasswordScreen/CreatePasswordScreen';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginScreen from "./src/screens/LoginScreen/LoginScreen";
+import ForgotPasswordPhoneScreen from "./src/screens/ForgotPasswordPhoneScreen/ForgotPasswordPhoneScreen";
+import ForgotPasswordCodeScreen from "./src/screens/ForgotPasswordCodeScreen/ForgotPasswordCodeScreen";
+import CreatePasswordScreen from "./src/screens/CreatePasswordScreen/CreatePasswordScreen";
 
 const Stack = createNativeStackNavigator();
 

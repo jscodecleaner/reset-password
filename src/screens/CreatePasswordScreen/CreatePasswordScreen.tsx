@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
-import styles from './CreatePasswordScreen.style';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
-import CustomLoading from '../../components/CustomLoading/CustomLoading';
+import React, { useState, useEffect } from "react";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import styles from "./CreatePasswordScreen.style";
+import Background from "../../components/Background";
+import Header from "../../components/Header";
+import CustomLoading from "../../components/CustomLoading/CustomLoading";
 
 export type Props = {
   navigation: any;
 };
 
 const CreatePasswordScreen = ({ navigation }: Props) => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
@@ -18,9 +18,9 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
   const handleResetPassword = async () => {
     // We can add some functions to reset password later.
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoading(false);
-    navigation.navigate('LoginScreen');
+    navigation.navigate("LoginScreen");
   };
 
   const isPasswordStrong = (password: string): boolean => {
@@ -49,7 +49,7 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
           <TextInput
             secureTextEntry={!isPasswordVisible}
             style={styles.PasswordInput}
-            onChangeText={text => setPassword(text)}
+            onChangeText={(text) => setPassword(text)}
             value={password}
             placeholder="Enter your password"
           />
@@ -59,12 +59,12 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
             {isPasswordVisible ? (
               <Image
                 style={styles.EyeImage}
-                source={require('../../assets/images/eye-hide.png')}
+                source={require("../../assets/images/eye-hide.png")}
               />
             ) : (
               <Image
                 style={styles.EyeImage}
-                source={require('../../assets/images/eye.png')}
+                source={require("../../assets/images/eye.png")}
               />
             )}
           </TouchableOpacity>
@@ -72,12 +72,12 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
         {!validPassword && (
           <View style={styles.PasswordFormatLabelContainer}>
             <Text style={styles.PasswordFormatLabel}>
-              {'\u00B7'} Minimum 8 charaters
+              {"\u00B7"} Minimum 8 charaters
             </Text>
             <Text style={styles.PasswordFormatLabel}>
-              {'\u00B7'} 1 upper case letter
+              {"\u00B7"} 1 upper case letter
             </Text>
-            <Text style={styles.PasswordFormatLabel}>{'\u00B7'} 1 number</Text>
+            <Text style={styles.PasswordFormatLabel}>{"\u00B7"} 1 number</Text>
           </View>
         )}
         <TouchableOpacity

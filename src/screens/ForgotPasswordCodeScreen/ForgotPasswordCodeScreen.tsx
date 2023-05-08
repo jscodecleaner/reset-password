@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './ForgotPasswordCodeScreen.style';
-import OTPTextInput from 'react-native-otp-textinput';
-import Background from '../../components/Background';
-import OTPSender from '../../api/OTPSender';
-import Header from '../../components/Header';
-import CustomLoading from '../../components/CustomLoading/CustomLoading';
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import styles from "./ForgotPasswordCodeScreen.style";
+import OTPTextInput from "react-native-otp-textinput";
+import Background from "../../components/Background";
+import OTPSender from "../../api/OTPSender";
+import Header from "../../components/Header";
+import CustomLoading from "../../components/CustomLoading/CustomLoading";
 
 export type Props = {
   navigation: any;
@@ -20,20 +20,20 @@ export type Props = {
 const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
   const { countryCode, wholePhonenumber } = route.params;
   const [loading, setLoading] = useState(false);
-  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState("");
   const [validCodeStatus, setValidCodeStatus] = useState(false);
-  const [code, setCode] = useState('');
-  const [otpCode, setOtpCode] = useState('');
+  const [code, setCode] = useState("");
+  const [otpCode, setOtpCode] = useState("");
   const [countdown, setCountdown] = useState(60);
   const [isCountingDown, setIsCountingDown] = useState(false);
 
   const handleResetPassword = async () => {
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setOtpCode('');
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setOtpCode("");
     setLoading(false);
     setValidCodeStatus(false);
-    navigation.navigate('CreatePasswordScreen');
+    navigation.navigate("CreatePasswordScreen");
   };
 
   const startCountdown = () => {
@@ -51,19 +51,19 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
     setCode(randomNumber.toString());
 
     OTPSender.sendSMS(wholePhonenumber, randomNumber.toString());
-    setOtpCode('');
+    setOtpCode("");
   };
 
   useEffect(() => {
     startCountdown();
     sendFirstOTPCode();
     setValidCodeStatus(false);
-    console.log('validCodeStatus ', validCodeStatus);
+    console.log("validCodeStatus ", validCodeStatus);
   }, []);
 
   useEffect(() => {
     const formatedNumber =
-      countryCode + ' ' + wholePhonenumber.split(countryCode).join('');
+      countryCode + " " + wholePhonenumber.split(countryCode).join("");
     setFormattedPhoneNumber(formatedNumber);
   });
 
@@ -106,11 +106,11 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
             //     : styles.otpInputInactive
             // }
             textInputStyle={styles.otpInputActive}
-            handleTextChange={code => setOtpCode(code)}
+            handleTextChange={(code) => setOtpCode(code)}
           />
         </View>
         <Text style={styles.ResendCodeLabel}>
-          Didn't get the code? We can{' '}
+          Didn't get the code? We can{" "}
           {isCountingDown ? (
             <Text style={styles.ResendCodeRemainSeconds}>
               resend it in {countdown}s.

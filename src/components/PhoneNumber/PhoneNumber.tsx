@@ -3,10 +3,10 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   MutableRefObject,
-} from 'react';
-import { View } from 'react-native';
-import PhoneInput from 'react-native-phone-number-input';
-import styles from './PhoneNumber.style';
+} from "react";
+import { View } from "react-native";
+import PhoneInput from "react-native-phone-number-input";
+import styles from "./PhoneNumber.style";
 
 export type PhoneNumberProps = {
   onChange: (text: string) => void;
@@ -18,7 +18,7 @@ const PhoneNumer: ForwardRefRenderFunction<PhoneInput, PhoneNumberProps> = (
   ref
 ) => {
   const getCountryCodeAndPhoneNumber = (formattedText: string) => {
-    const wholePhonenumber = formattedText.split(' ')[0];
+    const wholePhonenumber = formattedText.split(" ")[0];
     return { wholePhonenumber };
   };
 
@@ -33,13 +33,13 @@ const PhoneNumer: ForwardRefRenderFunction<PhoneInput, PhoneNumberProps> = (
         textContainerStyle={styles.PhoneTextInput}
         textInputStyle={styles.PhonetextInputStyle}
         ref={ref as MutableRefObject<PhoneInput>}
-        defaultValue={''}
+        defaultValue={""}
         defaultCode="US"
         layout="first"
-        onChangeText={text => {
+        onChangeText={(text) => {
           props.onChange(text);
         }}
-        onChangeFormattedText={text => {
+        onChangeFormattedText={(text) => {
           props.setFormattedValue(text);
           getCountryCodeAndPhoneNumber(text);
         }}

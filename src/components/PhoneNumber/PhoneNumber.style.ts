@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet, ViewStyle, TextStyle } from "react-native";
 
 interface Style {
   PhoneInputWrapper: ViewStyle;
@@ -9,19 +9,19 @@ interface Style {
 
 export default StyleSheet.create<Style>({
   PhoneInputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: 2,
-    borderBottomColor: 'rgba(31, 31, 51, 0.1)',
+    borderBottomColor: "rgba(31, 31, 51, 0.1)",
     padding: 0,
     marginTop: 50,
   },
   PhoneInput: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   PhoneTextInput: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingLeft: 0,
   },
   PhonetextInputStyle: {
