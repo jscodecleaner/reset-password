@@ -42,8 +42,10 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
     <Background>
       <Header navigation={navigation} />
       <View style={styles.Container}>
-        <Text style={styles.Title}>Forgot Password</Text>
-        <Text style={styles.PasswordLabel}>
+        <Text testID="title" style={styles.Title}>
+          Forgot Password
+        </Text>
+        <Text testID="passwordLabel" style={styles.PasswordLabel}>
           Please enter your registered phone number to reset your password
         </Text>
         <PhoneNumer
@@ -56,6 +58,7 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
           }}
         />
         <TouchableOpacity
+          testID="resetPasswordButton"
           onPress={handleResetPassword}
           style={styles.ResetButton}
           disabled={!phoneNumber}
@@ -64,6 +67,7 @@ const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {
             <CustomLoading />
           ) : (
             <Text
+              testID="resetPasswordButtonText"
               style={[
                 styles.ResetButtonText,
                 (!phoneNumber || loading) && styles.disabledButton,
