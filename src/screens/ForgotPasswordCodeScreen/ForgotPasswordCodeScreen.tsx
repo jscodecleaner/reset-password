@@ -91,11 +91,15 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
     <Background>
       <Header navigation={navigation} />
       <View style={styles.Container}>
-        <Text style={styles.Title}>Forgot Password</Text>
-        <Text style={styles.PasswordLabel}>
+        <Text testID="title" style={styles.Title}>
+          Forgot Password
+        </Text>
+        <Text testID="passwordLabel" style={styles.PasswordLabel}>
           Enter the 4-digit code sent to you at
         </Text>
-        <Text style={styles.PhoneLabel}>{formattedPhoneNumber}</Text>
+        <Text testID="phoneLabel" style={styles.PhoneLabel}>
+          {formattedPhoneNumber}
+        </Text>
         <View style={styles.inputView}>
           <OTPTextInput
             inputCount={4}
@@ -109,7 +113,7 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
             handleTextChange={(code) => setOtpCode(code)}
           />
         </View>
-        <Text style={styles.ResendCodeLabel}>
+        <Text testID="resendCodeLabel" style={styles.ResendCodeLabel}>
           Didn't get the code? We can{" "}
           {isCountingDown ? (
             <Text style={styles.ResendCodeRemainSeconds}>
@@ -122,6 +126,7 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
           )}
         </Text>
         <TouchableOpacity
+          testID="resetPasswordButton"
           onPress={handleResetPassword}
           style={styles.ResetButton}
           disabled={!validCodeStatus}
@@ -130,6 +135,7 @@ const ForgotPasswordCodeScreen = ({ route, navigation }: Props) => {
             <CustomLoading />
           ) : (
             <Text
+              testID="resetPasswordButtonText"
               style={[
                 styles.ResetButtonText,
                 (!validCodeStatus || loading) && styles.disabledButton,
