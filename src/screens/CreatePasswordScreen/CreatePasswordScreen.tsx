@@ -43,10 +43,15 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
     <Background>
       <Header navigation={navigation} />
       <View style={styles.Container}>
-        <Text style={styles.Title}>Create Password</Text>
-        <Text style={styles.PasswordLabel}>Password</Text>
+        <Text testID="title" style={styles.Title}>
+          Create Password
+        </Text>
+        <Text testID="passwordLabel" style={styles.PasswordLabel}>
+          Password
+        </Text>
         <View style={styles.PasswordInputContainer}>
           <TextInput
+            testID="passwordInput"
             secureTextEntry={!isPasswordVisible}
             style={styles.PasswordInput}
             onChangeText={(text) => setPassword(text)}
@@ -54,15 +59,18 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
             placeholder="Enter your password"
           />
           <TouchableOpacity
+            testID="togglePasswordVisibility"
             onPress={() => setIsPasswordVisible(!isPasswordVisible)}
           >
             {isPasswordVisible ? (
               <Image
+                testID="eyeImageHide"
                 style={styles.EyeImage}
                 source={require("../../assets/images/eye-hide.png")}
               />
             ) : (
               <Image
+                testID="eyeImage"
                 style={styles.EyeImage}
                 source={require("../../assets/images/eye.png")}
               />
@@ -70,7 +78,10 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
           </TouchableOpacity>
         </View>
         {!validPassword && (
-          <View style={styles.PasswordFormatLabelContainer}>
+          <View
+            testID="passwordFormatLabelContainer"
+            style={styles.PasswordFormatLabelContainer}
+          >
             <Text style={styles.PasswordFormatLabel}>
               {"\u00B7"} Minimum 8 charaters
             </Text>
@@ -81,6 +92,7 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
           </View>
         )}
         <TouchableOpacity
+          testID="resetPasswordButton"
           onPress={handleResetPassword}
           style={styles.ResetButton}
           disabled={!validPassword}
@@ -89,6 +101,7 @@ const CreatePasswordScreen = ({ navigation }: Props) => {
             <CustomLoading />
           ) : (
             <Text
+              testID="resetPasswordButtonText"
               style={[
                 styles.ResetButtonText,
                 (!validPassword || loading) && styles.disabledButton,
