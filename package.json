@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@testing-library/jest-native": "^5.4.2",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "react": "18.2.0",
@@ -21,8 +22,10 @@
     "react-native-phone-number-input": "^2.1.0",
     "react-native-safe-area-context": "^4.5.2",
     "react-native-screens": "^3.20.0",
+    "react-native-testing-library": "^6.0.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-navigation": "^4.4.4"
+    "react-navigation": "^4.4.4",
+    "ts-jest": "^29.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -35,6 +38,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.73.9",
     "prettier": "^2.8.8",
@@ -42,6 +46,38 @@
     "typescript": "4.8.4"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/e2e/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true,
+        "diagnostics": false,
+        "isolatedModules": true
+      }
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|css|scss)$": "identity-obj-proxy"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|react-native-phone-number-input|@react-native/polyfills|react-native-country-picker-modal|react-native-otp-textinput|react-clone-referenced-element|@react-native-community|@react-navigation|react-native-screens|@react-native|@babel/runtime)/)"
+    ]
   }
 }
