@@ -41,16 +41,18 @@ const LoginScreen = ({ navigation }: Props) => {
         />
         <Text style={styles.PasswordLabel}>Password</Text>
         <TextInput
+          testID="passwordInput"
           secureTextEntry
           style={styles.PasswordInput}
           onChangeText={text => setPassword(text)}
           value={password}
           placeholder="Enter your password"
         />
-        <TouchableOpacity onPress={handleForgotPassword}>
+        <TouchableOpacity testID="forgotPasswordButton" onPress={handleForgotPassword}>
           <Text style={styles.ForgotPasswordButton}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          testID="loginWithPhoneButton"
           onPress={handleLoginWithPhone}
           style={styles.LoginPhoneButton}
         >
@@ -58,7 +60,7 @@ const LoginScreen = ({ navigation }: Props) => {
             Login with Phone Number
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleLogin} style={styles.LoginButton}>
+        <TouchableOpacity testID="loginButton" onPress={handleLogin} style={styles.LoginButton}>
           <Text style={styles.LoginButtonText}>Login</Text>
         </TouchableOpacity>
       </View>
