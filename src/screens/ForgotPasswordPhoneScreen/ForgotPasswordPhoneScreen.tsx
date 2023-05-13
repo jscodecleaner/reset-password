@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import styles from "./ForgotPasswordPhoneScreen.style";
 import Background from "../../components/Background";
 import Header from "../../components/Header";
@@ -7,8 +8,16 @@ import PhoneNumer from "../../components/PhoneNumber/PhoneNumber";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 import { PhoneInput } from "react-native-phone-number-input";
 
+// Define the list of screens in the stack navigator 
+type RootStackParamList = {
+  ForgotPasswordCodeScreen: {countryCode: string, wholePhonenumber: string};
+};
+
+// Define the navigation prop type
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ForgotPasswordCodeScreen'>;
+
 export type Props = {
-  navigation: any;
+  navigation: NavigationProp;
 };
 
 const ForgotPasswordPhoneScreen = ({ navigation }: Props) => {

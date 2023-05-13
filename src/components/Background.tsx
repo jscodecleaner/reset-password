@@ -11,12 +11,12 @@ export type Props = {
 };
 
 export default function Background({ children }: Props) {
-  return Platform.OS === "ios" ? (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
-      {children}
-    </KeyboardAvoidingView>
-  ) : (
-    <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+  return (
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        {children}
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
