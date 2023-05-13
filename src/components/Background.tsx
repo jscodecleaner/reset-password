@@ -13,7 +13,10 @@ export type Props = {
 export default function Background({ children }: Props) {
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         {children}
       </KeyboardAvoidingView>
     </SafeAreaView>

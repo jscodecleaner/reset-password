@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import styles from "./ForgotPasswordCodeScreen.style";
 import OTPTextInput from "react-native-otp-textinput";
 import Background from "../../components/Background";
@@ -7,8 +8,17 @@ import OTPSender from "../../api/OTPSender";
 import Header from "../../components/Header";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 
+type RootStackParamList = {
+  CreatePasswordScreen: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "CreatePasswordScreen"
+>;
+
 export type Props = {
-  navigation: any;
+  navigation: NavigationProp;
   route: {
     params: {
       countryCode: string;

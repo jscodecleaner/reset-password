@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import styles from "./CreatePasswordScreen.style";
 import Background from "../../components/Background";
 import Header from "../../components/Header";
 import CustomLoading from "../../components/CustomLoading/CustomLoading";
 
+type RootStackParamList = {
+  LoginScreen: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "LoginScreen"
+>;
+
 export type Props = {
-  navigation: any;
+  navigation: NavigationProp;
 };
 
 const CreatePasswordScreen = ({ navigation }: Props) => {
