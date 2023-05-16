@@ -1,6 +1,6 @@
 # Reset Password
 
-This is the react native onboarding for reset password module
+This is the react native test simple app for reset password module
 
 # Requirements
 
