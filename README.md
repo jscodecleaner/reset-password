@@ -15,7 +15,7 @@ This is the react native test simple app for reset password module
 - Run metro server "yarn start"
 - Run this app "npx react-native run-android" or "npx react-native run-ios"
 
-# How does this onboading work
+# How does this test app work
 
 - On the Login screen, press the "Forgot Password?" button.
 - On the Forgot Password screen, select country number and enter your phone number then click "Reset password" button.
